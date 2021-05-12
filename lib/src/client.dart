@@ -92,12 +92,10 @@ class GiphyClient {
 
   Future<Response> _getWithAuthorization(Uri uri) async {
     final response = await _client.get(
-      uri
-          .replace(
+      uri.replace(
             queryParameters: Map<String, String>.from(uri.queryParameters)
               ..putIfAbsent('api_key', () => _apiKey),
-          )
-          .toString(),
+          ),
     );
 
     if (response.statusCode == 200) {
